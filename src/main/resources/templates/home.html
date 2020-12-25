@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>News Main</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #c84aee;
+        }
+    </style>
+</head>
+
+<body>
+    <header th:insert="blocks/header :: header" >
+    </header>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 text-white rounded bg-warning">
+            <div class="col-md-6 px-0">
+                <h1 class="display-4 font-italic">Доброе утро, Найт-сити!</h1>
+                <p class="lead my-3">Только свежие новости нашего уютного города!</p>
+            </div>
+        </div>
+        <div class="container mt-5 bg-warning">
+            <div th:each="el:${newss}" class="alert alert-info mt-2">
+                <h3 th:text="${el.title}"></h3>
+                <p th:text="${el.anons}"></p>
+                <a th:href="'/' + ${el.id}">Детальнее</a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Редактирование новость</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #c84aee;
+        }
+    </style>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <div class="container mt-5 mb-5">
+        <h1>Редактирование статьи</h1>
+        <div th:each="el:${news}">
+            <form method="post">
+                <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
+                <input type="text" th:value="${el.anons}" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
+                <textarea type="text" th:value="${el.full_text}" name="full_text" placeholder="Введите полный текст"
+                    class="form-control"></textarea><br>
+                <button type="submit" class="btn btn-warning">Обновить</button>
+            </form> 
+        </div>
+    </div>
+</body>
+
+</html>
