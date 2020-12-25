@@ -67,7 +67,7 @@ public class NewsController {
     
     @PostMapping("/{id}/edit")
     public String newsEditUpdate(@PathVariable(value = "id") long id,@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
-        News news = newsRepos.findById(id).orElseThrow();
+        News news = newsRepos.findById(id).orElseThrow(IllegalStateException::new);
         news.setTitle(title);
         news.setAnons(anons);
         news.setFull_text(full_text);
@@ -78,7 +78,7 @@ public class NewsController {
     
     @PostMapping("/{id}/remove")
     public String newsEditRemove(@PathVariable(value = "id") long id, Model model) {
-        News news = newsRepos.findById(id).orElseThrow();
+        News news = newsRepos.findById(id).orElseThrow(IllegalStateException::new);
         newsRepos.delete(news);
         return "redirect:/";
     }
